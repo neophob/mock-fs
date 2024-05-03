@@ -13,7 +13,7 @@ describe('mock.bypass()', () => {
   it('runs a synchronous function using the real filesystem', () => {
     mock({'/path/to/file': 'content'});
 
-    assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
+    assert.equal(fs.readFileSync('/path/to/file', 'utf-8'), 'content');
     assert.isNotOk(fs.existsSync(__filename));
     assert.isOk(mock.bypass(() => fs.existsSync(__filename)));
 
@@ -32,7 +32,7 @@ describe('mock.bypass()', () => {
       });
     }, error);
 
-    assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
+    assert.equal(fs.readFileSync('/path/to/file', 'utf-8'), 'content');
   });
 
   it('bypasses patched process.cwd() and process.chdir()', () => {
@@ -60,7 +60,7 @@ describe('mock.bypass()', () => {
   it('runs an async function using the real filesystem', (done) => {
     mock({'/path/to/file': 'content'});
 
-    assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
+    assert.equal(fs.readFileSync('/path/to/file', 'utf-8'), 'content');
     assert.isFalse(fs.existsSync(__filename));
 
     mock
@@ -76,7 +76,7 @@ describe('mock.bypass()', () => {
   it('handles promise rejection', (done) => {
     mock({'/path/to/file': 'content'});
 
-    assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
+    assert.equal(fs.readFileSync('/path/to/file', 'utf-8'), 'content');
     assert.isFalse(fs.existsSync(__filename));
 
     const error = new Error('oops');
@@ -92,7 +92,7 @@ describe('mock.bypass()', () => {
       .catch((err) => {
         assert.equal(err, error);
 
-        assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
+        assert.equal(fs.readFileSync('/path/to/file', 'utf-8'), 'content');
         done();
       });
   });

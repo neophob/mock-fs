@@ -17,7 +17,7 @@ exports.test = function (done) {
     const tmpFile = path.join(tmpPath, 'foo-real.txt');
     fs.writeFile(tmpFile, 'foo', function (writeErr) {
       assert.ifError(writeErr);
-      fs.readFile(tmpFile, 'utf8', function (readErr, str) {
+      fs.readFile(tmpFile, 'utf-8', function (readErr, str) {
         assert.ifError(readErr);
         assert.equal(str, 'foo');
         rimraf(tmpPath, done);

@@ -24,7 +24,7 @@ exports.beforeEach = function (done) {
  * @param {function(Error)} done Callback.
  */
 exports.test = function (done) {
-  fs.readFile(path.join(tmpPath, 'foo-real.txt'), 'utf8', function (err, str) {
+  fs.readFile(path.join(tmpPath, 'foo-real.txt'), 'utf-8', function (err, str) {
     assert.ifError(err);
     assert.equal(str, 'foo');
     done();

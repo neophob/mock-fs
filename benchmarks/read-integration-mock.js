@@ -13,7 +13,7 @@ exports.test = function (done) {
     'foo-mock.txt': 'foo',
   });
 
-  fs.readFile('foo-mock.txt', 'utf8', function (err, str) {
+  fs.readFile('foo-mock.txt', 'utf-8', function (err, str) {
     assert.ifError(err);
     assert.equal(str, 'foo');
 

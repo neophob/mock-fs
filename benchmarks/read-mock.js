@@ -17,7 +17,7 @@ exports.beforeEach = function () {
  * @param {function(Error)} done Callback.
  */
 exports.test = function (done) {
-  fs.readFile('foo-mock.txt', 'utf8', function (err, str) {
+  fs.readFile('foo-mock.txt', 'utf-8', function (err, str) {
     assert.ifError(err);
     assert.equal(str, 'foo');
     done();

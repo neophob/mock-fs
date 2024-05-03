@@ -490,7 +490,7 @@ describe('Binding', function () {
   describe('#readdir()', function () {
     it('calls callback with file list', function (done) {
       const binding = new Binding(system);
-      binding.readdir('mock-dir', 'utf8', false, function (err, items) {
+      binding.readdir('mock-dir', 'utf-8', false, function (err, items) {
         assert.isNull(err);
         assert.isArray(items);
         assert.deepEqual(items.sort(), [
@@ -538,7 +538,7 @@ describe('Binding', function () {
 
     it('returns a file list (sync)', function () {
       const binding = new Binding(system);
-      const items = binding.readdir('mock-dir', 'utf8', false);
+      const items = binding.readdir('mock-dir', 'utf-8', false);
       assert.isArray(items);
       assert.deepEqual(items.sort(), [
         'dead-link',
@@ -558,7 +558,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       binding.readdir(
         path.join('mock-dir', 'dir-link'),
-        'utf8',
+        'utf-8',
         false,
         function (err, items) {
           assert.isNull(err);
@@ -573,7 +573,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       binding.readdir(
         path.join('mock-dir', 'dir-link2'),
-        'utf8',
+        'utf-8',
         false,
         function (err, items) {
           assert.isNull(err);
@@ -588,7 +588,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       const items = binding.readdir(
         path.join('mock-dir', 'dir-link'),
-        'utf8',
+        'utf-8',
         false
       );
       assert.isArray(items);
@@ -597,7 +597,7 @@ describe('Binding', function () {
 
     it('calls callback with error for bogus dir', function (done) {
       const binding = new Binding(system);
-      binding.readdir('bogus', 'utf8', false, function (err, items) {
+      binding.readdir('bogus', 'utf-8', false, function (err, items) {
         assert.instanceOf(err, Error);
         assert.isUndefined(items);
         done();
@@ -608,7 +608,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       binding.readdir(
         path.join('mock-dir', 'one.txt'),
-        'utf8',
+        'utf-8',
         false,
         function (err, items) {
           assert.instanceOf(err, Error);
@@ -622,7 +622,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       binding.readdir(
         path.join('mock-dir', 'dead-link'),
-        'utf8',
+        'utf-8',
         false,
         function (err, items) {
           assert.instanceOf(err, Error);
@@ -636,7 +636,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       binding.readdir(
         path.join('mock-dir', 'one-link.txt'),
-        'utf8',
+        'utf-8',
         false,
         function (err, items) {
           assert.instanceOf(err, Error);
@@ -650,7 +650,7 @@ describe('Binding', function () {
       const binding = new Binding(system);
       binding.readdir(
         path.join('mock-dir', 'one-link2.txt'),
-        'utf8',
+        'utf-8',
         false,
         function (err, items) {
           assert.instanceOf(err, Error);

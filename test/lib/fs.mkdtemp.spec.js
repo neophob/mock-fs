@@ -44,7 +44,7 @@ if (fs.mkdtemp) {
     });
 
     it('accepts a "utf8" encoding argument', function (done) {
-      fs.mkdtemp('parent/dir', 'utf8', function (err, dirPath) {
+      fs.mkdtemp('parent/dir', 'utf-8', function (err, dirPath) {
         if (err) {
           return done(err);
         }
@@ -58,7 +58,7 @@ if (fs.mkdtemp) {
     });
 
     it('promise accepts a "utf8" encoding argument', function (done) {
-      fs.promises.mkdtemp('parent/dir', 'utf8').then(function (dirPath) {
+      fs.promises.mkdtemp('parent/dir', 'utf-8').then(function (dirPath) {
         assert.isString(dirPath);
         const parentPath = path.dirname(dirPath);
         assert.equal(parentPath, 'parent');
@@ -96,7 +96,7 @@ if (fs.mkdtemp) {
     });
 
     it('accepts an options argument with "utf8" encoding', function (done) {
-      fs.mkdtemp('parent/dir', {encoding: 'utf8'}, function (err, dirPath) {
+      fs.mkdtemp('parent/dir', {encoding: 'utf-8'}, function (err, dirPath) {
         if (err) {
           return done(err);
         }
@@ -111,7 +111,7 @@ if (fs.mkdtemp) {
 
     it('promise accepts an options argument with "utf8" encoding', function (done) {
       fs.promises
-        .mkdtemp('parent/dir', {encoding: 'utf8'})
+        .mkdtemp('parent/dir', {encoding: 'utf-8'})
         .then(function (dirPath) {
           assert.isString(dirPath);
           const parentPath = path.dirname(dirPath);
@@ -253,7 +253,7 @@ if (fs.mkdtempSync) {
     });
 
     it('accepts a "utf8" encoding argument', function () {
-      const dirPath = fs.mkdtempSync('parent/dir', 'utf8');
+      const dirPath = fs.mkdtempSync('parent/dir', 'utf-8');
       assert.isString(dirPath);
       const parentPath = path.dirname(dirPath);
       assert.equal(parentPath, 'parent');
@@ -272,7 +272,7 @@ if (fs.mkdtempSync) {
     });
 
     it('accepts an options argument with "utf8" encoding', function () {
-      const dirPath = fs.mkdtempSync('parent/dir', {encoding: 'utf8'});
+      const dirPath = fs.mkdtempSync('parent/dir', {encoding: 'utf-8'});
       assert.isString(dirPath);
       const parentPath = path.dirname(dirPath);
       assert.equal(parentPath, 'parent');
